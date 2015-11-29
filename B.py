@@ -1,5 +1,9 @@
-N = int(input())
-n = [int(x) for x in input().split()]
+input = open('input.txt', 'r')
+output = open('output.txt', 'w')
+N, n = input.readlines()
+N = int(N.rstrip())
+n = n.rstrip()
+n = [int(x) for x in n.split()]
 requiredcoins = 0
 availiblecoins = 0
 for i in range(N):
@@ -10,5 +14,4 @@ for i in range(N):
         if availiblecoins < 0:
             requiredcoins -= availiblecoins
             availiblecoins = 0
-else:
-    print(int(requiredcoins))
+print(int(requiredcoins), file = output)
