@@ -1,17 +1,20 @@
-input = open('input.txt', 'r')
-output = open('output.txt', 'w')
-N, n = input.readlines()
-N = int(N.rstrip())
-n = n.rstrip()
-n = [int(x) for x in n.split()]
-requiredcoins = 0
-availiblecoins = 0
-for i in range(N):
-    if n[i] == 5:
-        availiblecoins += 1
+f=open('input.txt')
+N=int(f.readline())
+free=0
+fives=0
+massiv=list(map(int, f.readline().split()))
+for i in massiv:
+    if i==5:
+        free+=1
     else:
-        availiblecoins -= (n[i] - 5) / 5
-        if availiblecoins < 0:
-            requiredcoins -= availiblecoins
-            availiblecoins = 0
-print(int(requiredcoins), file = output)
+        d=(i-5)//5
+        if free>0:
+            if free>=d: d,free = 0, free-d
+            else: d,free = d-free, 0
+        fives+=d
+            
+f=open('output.txt', 'w')    
+        
+
+print(fives, file = f)    
+f.close()
